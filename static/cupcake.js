@@ -3,6 +3,7 @@ BASE_URL = 'http://127.0.0.1:5000/api/cupcakes'
 const cupcakeList = document.querySelector('#cupcake-list')
 const formdata = document.querySelector('.form-data')
 
+
 function getHtmlForCupcake(cupcake) {
     const div = document.createElement('div');
     div.setAttribute('data-cupcake-id', cupcake.id);
@@ -47,8 +48,18 @@ formdata.addEventListener('submit', async function (e) {
 
     const newCupcake = getHtmlForCupcake(newCupcakeResponse.data.cupcake);
     cupcakeList.append(newCupcake);
-    // const div = document.createElement("div")
-    // div.classList.add('foobar');
-    // cupcakeList.append(div);
+    formdata.reset();
 
+    const deleteBtn = document.querySelector('.delete-button');
+
+    deleteBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        let cupcake = e.target.closest('div');
+        let cupcake_id = cupcake.dataset.cupcakeId
+        await axios.delete(`${BASE_URL}/${cupcake_id}`);
+        cupcake.remove();
+    })
 })
+)
+
+getAllCupcakes;
