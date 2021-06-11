@@ -17,6 +17,11 @@ toolbar = DebugToolbarExtension(app)
 connect_db(app)
 
 
+@app.route('/')
+def home_page():
+    return render_template('index.html')
+
+
 @app.route('/api/cupcakes')
 def get_all_cupcakes():
     cupcakes = Cupcake.query.all()
@@ -50,7 +55,7 @@ def create_cupcake():
     return (jsonify(cupcake=serialized), 201)
 
 
-@app.route('/api/cupcakes/<int:cup_id>', methods=['Patch'])
+@app.route('/api/cupcakes/<int:cup_id>', methods=['PATCH'])
 def edit_cupcake(cup_id):
     cupcake = Cupcake.query.get_or_404(cup_id)
     cupcake.flavor = request.json.get('flavor', cupcake.flavor)
@@ -62,3 +67,12 @@ def edit_cupcake(cup_id):
 
     response_json = jsonify(cupcake.serialize())
     return (response_json)
+
+
+@app.route('/api/cupcakes/<int:cup_id>', methods=['DELETE'])
+def delete_cupcake(cup_id):
+
+    cupcake = Cupcake.query.get_or_404(cup_id)
+    db.session.delete(cupcake)
+    db.session.commit()
+    return jsonify(message='Deleted')

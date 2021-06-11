@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CupCakes</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static/cupcakes.css" />
+  </head>
+  <body>
+    <div class="container form-group">
+      <h1 class="text-center">Cupakes</h1>
+      <h2>See all CupCakes</h2>
+
+      <ul id="cupcake-list"></ul>
+
+      <h2>Add New CupCake</h2>
+      <form action="" class="form-data">
+        <p>
+          <b> Flavor </b>
+          <input type="text" id="cup-flavor" placeholder="Cupcake Flavor" />
+        </p>
+        <p>
+          <b> Size </b>
+          <input type="text" id="cup-size" placeholder="Cupcake Size" />
+        </p>
+        <p>
+          <b> Rating </b>
+          <input type="text" id="cup-rating" placeholder="Cupcake Rating" />
+        </p>
+        <p>
+          <b> Image </b>
+          <input type="url" id="cup-image" placeholder="Cupcake Image" />
+        </p>
+
+        <button class="btn btn-success" id="submit">Add</button>
+      </form>
+    </div>
+  </body>
+  <script src="static/cupcake.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</html>
